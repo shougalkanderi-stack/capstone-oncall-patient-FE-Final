@@ -25,7 +25,8 @@ export default function AIAnalysisScreen() {
   // });
   const {
     data: data,
-    isLoading, error,
+    isLoading,
+    error,
     refetch: refetchProfile,
   } = useQuery({
     queryKey: ["profile"],
@@ -89,7 +90,10 @@ export default function AIAnalysisScreen() {
         <View style={styles.errorContainer}>
           <Ionicons name="alert-circle" size={48} color="#ef4444" />
           <Text style={styles.errorText}>Failed to load profile</Text>
-          <TouchableOpacity style={styles.retryButton} onPress={() => router.back()}>
+          <TouchableOpacity
+            style={styles.retryButton}
+            onPress={() => router.back()}
+          >
             <Text style={styles.retryButtonText}>Go Back</Text>
           </TouchableOpacity>
         </View>
@@ -118,7 +122,7 @@ export default function AIAnalysisScreen() {
             <Ionicons name="person-circle" size={24} color="#6d9c7a" />
             <Text style={styles.cardTitle}>Patient Information</Text>
           </View>
-          
+
           <View style={styles.patientInfo}>
             <View style={styles.infoRow}>
               <Text style={styles.infoLabel}>Name:</Text>
@@ -126,21 +130,21 @@ export default function AIAnalysisScreen() {
                 {data?.patient?.name || "N/A"}
               </Text>
             </View>
-            
+
             <View style={styles.infoRow}>
               <Text style={styles.infoLabel}>Email:</Text>
               <Text style={styles.infoValue}>
                 {data?.patient?.email || "N/A"}
               </Text>
             </View>
-            
+
             <View style={styles.infoRow}>
               <Text style={styles.infoLabel}>Phone:</Text>
               <Text style={styles.infoValue}>
                 {data?.patient?.phone || "N/A"}
               </Text>
             </View>
-            
+
             <View style={styles.infoRow}>
               <Text style={styles.infoLabel}>Civil ID:</Text>
               <Text style={styles.infoValue}>
@@ -159,23 +163,24 @@ export default function AIAnalysisScreen() {
 
           <View style={styles.progressContainer}>
             <Text style={styles.currentStep}>{currentStep}</Text>
-            
+
             <View style={styles.progressBar}>
-              <View 
-                style={[
-                  styles.progressFill, 
-                  { width: `${analysisProgress}%` }
-                ]} 
+              <View
+                style={[styles.progressFill, { width: `${analysisProgress}%` }]}
               />
             </View>
-            
-            <Text style={styles.progressText}>{analysisProgress}% Complete</Text>
+
+            <Text style={styles.progressText}>
+              {analysisProgress}% Complete
+            </Text>
           </View>
 
           {analysisProgress === 100 && (
             <View style={styles.completionContainer}>
               <Ionicons name="checkmark-circle" size={48} color="#6d9c7a" />
-              <Text style={styles.completionText}>Analysis Complete!</Text>
+              <Text style={styles.completionText}>
+                Analysis's sent to your Email!
+              </Text>
               <Text style={styles.completionSubtext}>
                 Your AI analysis report is ready for review.
               </Text>
@@ -195,22 +200,24 @@ export default function AIAnalysisScreen() {
               <Ionicons name="checkmark-circle" size={20} color="#6d9c7a" />
               <Text style={styles.detailText}>Medical history reviewed</Text>
             </View>
-            
+
             <View style={styles.detailItem}>
               <Ionicons name="checkmark-circle" size={20} color="#6d9c7a" />
               <Text style={styles.detailText}>Test results analyzed</Text>
             </View>
-            
+
             <View style={styles.detailItem}>
               <Ionicons name="checkmark-circle" size={20} color="#6d9c7a" />
               <Text style={styles.detailText}>Risk factors identified</Text>
             </View>
-            
+
             <View style={styles.detailItem}>
               <Ionicons name="checkmark-circle" size={20} color="#6d9c7a" />
-              <Text style={styles.detailText}>Personalized insights generated</Text>
+              <Text style={styles.detailText}>
+                Personalized insights generated
+              </Text>
             </View>
-            
+
             <View style={styles.detailItem}>
               <Ionicons name="checkmark-circle" size={20} color="#6d9c7a" />
               <Text style={styles.detailText}>Recommendations created</Text>
@@ -218,20 +225,20 @@ export default function AIAnalysisScreen() {
           </View>
         </View>
 
-        {/* Action Buttons */}
+        {/* Action Buttons
         {analysisProgress === 100 && (
           <View style={styles.actionButtons}>
             <TouchableOpacity style={styles.viewReportButton}>
               <Ionicons name="document" size={20} color="white" />
               <Text style={styles.viewReportButtonText}>View Full Report</Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity style={styles.shareButton}>
               <Ionicons name="share" size={20} color="#6d9c7a" />
               <Text style={styles.shareButtonText}>Share Report</Text>
             </TouchableOpacity>
           </View>
-        )}
+        )} */}
       </ScrollView>
     </SafeAreaView>
   );
@@ -471,4 +478,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginLeft: 8,
   },
-}); 
+});
